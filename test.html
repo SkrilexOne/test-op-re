@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест О/П и Р/Э (30 вопросов)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+            color: #1e293b;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 4px;
+            color: #0f172a;
+        }
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        .input-group {
+            margin-bottom: 25px;
+        }
+        .input-group label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .question {
+            background: #f8fafc;
+            padding: 16px 18px;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            border-left: 5px solid #8b5cf6;
+        }
+        .question .qnum {
+            font-weight: 700;
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        .question .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 14px;
+            margin: 4px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .question .option:hover {
+            background: #e2e8f0;
+        }
+        .question .option input[type="radio"] {
+            margin-top: 2px;
+            width: 18px;
+            height: 18px;
+            accent-color: #3b82f6;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .question .option .text {
+            font-size: 15px;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            background: #2563eb;
+            transform: scale(1.01);
+        }
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        .status.success {
+            display: block;
+            background: #dcfce7;
+            color: #166534;
+        }
+        .status.error {
+            display: block;
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .progress {
+            text-align: center;
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        .legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 6px 0 18px 0;
+            font-size: 13px;
+            color: #475569;
+        }
+        .legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .legend .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 4px;
+        }
+        .dot.op { background: #8b5cf6; }
+        .dot.re { background: #06b6d4; }
+        @media (max-width: 600px) {
+            .container { padding: 16px; }
+            .question .option { padding: 6px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🧠 Личностный тест</h1>
+    <p class="subtitle">30 вопросов · выберите один из двух вариантов</p>
+
+    <div class="legend">
+        <span><span class="dot op"></span> Вопросы О/П</span>
+        <span><span class="dot re"></span> Вопросы Р/Э</span>
+    </div>
+
+    <div class="input-group">
+        <label>👤 Ваше ФИО (или любое имя)</label>
+        <input type="text" id="userName" placeholder="Например: Иванов Иван Иванович" />
+    </div>
+
+    <form id="testForm">
+        <div id="questionsContainer"></div>
+    </form>
+
+    <button class="btn-submit" id="submitBtn">📤 Отправить результаты</button>
+    <div class="progress" id="progressDisplay">Ответов: 0 из 30</div>
+    <div id="statusMessage" class="status"></div>
+</div>
+
+<script>
+    // ============================================================
+    // ТВОИ 30 ВОПРОСОВ (буквы скрыты, присваиваются автоматически)
+    // ============================================================
+    const questions = [
+        // 1
+        { opt1: "Я обычно говорю людям то, что у меня на уме.", letter1: "О", opt2: "Я обычно держу мнение при себе.", letter2: "П" },
+        // 2
+        { opt1: "Я вижу себя хладнокровным и сдержанным с другими.", letter1: "П", opt2: "Я вижу себя теплым и дружелюбным с другими.", letter2: "О" },
+        // 3
+        { opt1: "Я обычно показываю свои эмоции другим.", letter1: "О", opt2: "Я обычно сдерживаю свои эмоции внутри себя.", letter2: "П" },
+        // 4
+        { opt1: "Я вижу себя спешащим человеком.", letter1: "Р", opt2: "Я вижу себя неторопливым человеком.", letter2: "Э" },
+        // 5
+        { opt1: "Я вижу себя человеком, готовым рисковать в большинстве ситуаций.", letter1: "Э", opt2: "Я вижу себя человеком, который избегает или минимизирует риск в большинстве ситуаций.", letter2: "Р" },
+        // 6
+        { opt1: "Я вижу себя настроенным на игру и любящим веселье человеком.", letter1: "Э", opt2: "Я вижу себя серьезным и вдумчивым человеком.", letter2: "Р" },
+        // 7
+        { opt1: "Я обычно жду, пока другие начнут общение со мной.", letter1: "П", opt2: "Я обычно начинаю общение.", letter2: "О" },
+        // 8
+        { opt1: "Я обычно рассуждаю на основе мнений.", letter1: "Э", opt2: "Я обычно рассуждаю на основе фактов.", letter2: "Р" },
+        // 9
+        { opt1: "Я обычно люблю работать с другими.", letter1: "О", opt2: "Я обычно люблю работать один.", letter2: "П" },
+        // 10
+        { opt1: "Я обычно беру на себя ответственность за ситуацию.", letter1: "Р", opt2: "Я обычно остаюсь в тени.", letter2: "Э" },
+        // 11
+        { opt1: "Я вижу себя активным и прямым человеком.", letter1: "О", opt2: "Я вижу себя тихим и умеренным человеком.", letter2: "П" },
+        // 12
+        { opt1: "Я обычно фокусирую внимание на итогах и результатах.", letter1: "Р", opt2: "Я обычно фокусирую внимание на процессе или методе.", letter2: "Э" },
+        // 13
+        { opt1: "Меня обычно интересует, что чувствуют люди.", letter1: "Э", opt2: "Меня обычно больше интересует, что думают люди.", letter2: "Р" },
+        // 14
+        { opt1: "Я обычно являюсь непринужденным и неформальным в общении с другими.", letter1: "Э", opt2: "Я обычно являюсь деловым и формальным в общении с другими.", letter2: "Р" },
+        // 15
+        { opt1: "Я обычно избегаю личностного фактора в общении с людьми.", letter1: "Р", opt2: "Я обычно прибегаю к более личностному подходу к людям.", letter2: "Э" },
+        // 16
+        { opt1: "Я обычно иду напрямую в конфликтной ситуации.", letter1: "Р", opt2: "Я обычно избегаю конфликта и конфронтации.", letter2: "Э" },
+        // 17
+        { opt1: "Я обычно становлюсь нетерпеливым с другими.", letter1: "О", opt2: "Я вижу себя терпеливым с другими.", letter2: "П" },
+        // 18
+        { opt1: "Я обычно много общаюсь с другими.", letter1: "О", opt2: "Я обычно имею ограниченное общение с другими.", letter2: "П" },
+        // 19
+        { opt1: "Я обычно больше ориентируюсь на задачу.", letter1: "Р", opt2: "Я обычно больше ориентируюсь на отношения.", letter2: "Э" },
+        // 20
+        { opt1: "Я обычно являюсь сдержанным и отчужденным с другими.", letter1: "П", opt2: "Я обычно являюсь открытым с другими.", letter2: "О" },
+        // 21
+        { opt1: "Я скорее вижу себя конкурирующим с другими.", letter1: "Р", opt2: "Я скорее вижу себя сотрудничающим с другими.", letter2: "Э" },
+        // 22
+        { opt1: "Я вижу себя более сдержанным с другими.", letter1: "П", opt2: "Я вижу себя более напористым с другими.", letter2: "О" },
+        // 23
+        { opt1: "Я обычно равнодушен к чувствам других.", letter1: "Р", opt2: "Я обычно проявляю внимание к чувствам других.", letter2: "Э" },
+        // 24
+        { opt1: "Я обычно принимаю быстрые решения.", letter1: "Р", opt2: "У меня обычно уходит больше времени на принятие решений.", letter2: "Э" },
+        // 25
+        { opt1: "Я вижу себя легким в общении и принимающим человеком.", letter1: "Э", opt2: "Я вижу себя требовательным к себе и другим человеком.", letter2: "Р" },
+        // 26
+        { opt1: "Я обычно следую за другими.", letter1: "П", opt2: "Я обычно направляю действия других.", letter2: "О" },
+        // 27
+        { opt1: "Я обычно насторожен и сдержан в общении.", letter1: "П", opt2: "Я обычно импульсивен и экспрессивен в общении.", letter2: "О" },
+        // 28
+        { opt1: "Я обычно держу свое мнение и мысли при себе.", letter1: "П", opt2: "Я обычно готов делиться своими мнениями и идеями.", letter2: "О" },
+        // 29
+        { opt1: "Я обычно становлюсь нетерпеливым при работе с другими.", letter1: "О", opt2: "Я обычно терпеливо работаю с другими.", letter2: "П" },
+        // 30
+        { opt1: "Я обычно делюсь своими личными чувствами с другими.", letter1: "О", opt2: "Я обычно держу свои личные чувства при себе.", letter2: "П" }
+    ];
+
+    console.log('Всего вопросов:', questions.length);
+
+    // ============================================================
+    // РЕНДЕР ВОПРОСОВ (буквы НЕ показываем)
+    // ============================================================
+    const container = document.getElementById('questionsContainer');
+    let html = '';
+
+    questions.forEach((q, idx) => {
+        const num = idx + 1;
+        html += `
+            <div class="question">
+                <div class="qnum">Вопрос ${num}</div>
+                <label class="option">
+                    <input type="radio" name="q${num}" value="${q.letter1}" required />
+                    <span class="text">${q.opt1}</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="q${num}" value="${q.letter2}" required />
+                    <span class="text">${q.opt2}</span>
+                </label>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+
+    // ============================================================
+    // ПРОГРЕСС
+    // ============================================================
+    const progressDisplay = document.getElementById('progressDisplay');
+
+    function updateProgress() {
+        const form = document.getElementById('testForm');
+        const names = new Set();
+        form.querySelectorAll('input[type="radio"]').forEach(r => names.add(r.name));
+        let answered = 0;
+        for (let name of names) {
+            if (document.querySelector(`input[name="${name}"]:checked`)) answered++;
+        }
+        progressDisplay.textContent = `Ответов: ${answered} из ${questions.length}`;
+    }
+
+    document.addEventListener('change', (e) => {
+        if (e.target && e.target.type === 'radio') updateProgress();
+    });
+
+    // ============================================================
+    // ОТПРАВКА
+    // ============================================================
+    const submitBtn = document.getElementById('submitBtn');
+    const statusMsg = document.getElementById('statusMessage');
+
+    // ⚠️ ВСТАВЬ СВОЙ URL СЮДА ↓↓↓
+    const SCRIPT_URL = 'https://script.google.com/macros/s/ТВОЙ_ID/exec';
+
+    submitBtn.addEventListener('click', async function(e) {
+        e.preventDefault();
+
+        const userName = document.getElementById('userName').value.trim();
+        if (!userName) {
+            statusMsg.className = 'status error';
+            statusMsg.textContent = '⚠️ Введите ваше ФИО или имя.';
+            return;
+        }
+
+        const checked = document.querySelectorAll('input[type="radio"]:checked');
+        if (checked.length !== questions.length) {
+            statusMsg.className = 'status error';
+            statusMsg.textContent = `⚠️ Ответьте на все 30 вопросов! (отвечено ${checked.length} из 30)`;
+            return;
+        }
+
+        let countO = 0, countP = 0, countR = 0, countE = 0;
+        checked.forEach(r => {
+            const val = r.value;
+            if (val === 'О') countO++;
+            else if (val === 'П') countP++;
+            else if (val === 'Р') countR++;
+            else if (val === 'Э') countE++;
+        });
+
+        const data = {
+            name: userName,
+            O: countO,
+            P: countP,
+            R: countR,
+            E: countE,
+            timestamp: new Date().toLocaleString('ru-RU')
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправка...';
+        statusMsg.className = 'status';
+
+        try {
+            await fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            statusMsg.className = 'status success';
+            statusMsg.textContent = '✅ Результаты отправлены! Спасибо!';
+            submitBtn.textContent = '✅ Отправлено';
+            submitBtn.disabled = true;
+        } catch (error) {
+            statusMsg.className = 'status error';
+            statusMsg.textContent = '❌ Ошибка. Попробуйте позже.';
+            submitBtn.disabled = false;
+            submitBtn.textContent = '📤 Отправить повторно';
+        }
+    });
+
+    updateProgress();
+</script>
+
+</body>
+</html>
