@@ -1,0 +1,92 @@
+/* Webinar & subscribe */
+.webinar-date { font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+
+.subscribe {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 40px 0;
+    text-align: center;
+}
+.subscribe h4 { font-size: 22px; margin-bottom: 8px; }
+.subscribe p { color: var(--muted); margin-bottom: 16px; }
+
+/* Read also */
+.post-list { list-style: none; margin: 0; padding: 0; }
+.post-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+}
+.post-list .tag {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* Footer */
+.site-footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 20px 24px;
+    background: var(--card-bg);
+    margin-top: 60px;
+}
+.footer-cols {
+    max-width: 1000px;
+    margin: 0 auto 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+.footer-cols h4 { font-size: 16px; margin-bottom: 12px; }
+.footer-cols ul { list-style: none; margin: 0; padding: 0; }
+.footer-cols li { margin-bottom: 6px; }
+.footer-cols a { color: var(--muted); text-decoration: none; font-size: 14px; }
+.footer-cols a:hover { color: var(--accent); }
+
+.footer-bottom {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    font-size: 13px;
+    color: var(--muted);
+}
+.footer-bottom a { color: var(--muted); text-decoration: none; }
+
+.cookie-banner {
+    max-width: 1000px;
+    margin: 24px auto 0;
+    font-size: 12px;
+    color: var(--muted);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+}
+.cookie-banner button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    .footer-cols { grid-template-columns: 1fr; }
+    .cookie-banner { flex-direction: column; align-items: flex-start; }
+}
