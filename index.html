@@ -1,202 +1,281 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тест О/П и Р/Э (30 вопросов)</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; padding: 20px; color: #1e293b; }
-        .container { max-width: 850px; margin: 0 auto; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        h1 { font-size: 28px; text-align: center; margin-bottom: 4px; color: #0f172a; }
-        .subtitle { text-align: center; color: #64748b; margin-bottom: 25px; font-size: 14px; }
-        .input-group { margin-bottom: 25px; }
-        .input-group label { font-weight: 600; display: block; margin-bottom: 6px; font-size: 15px; }
-        .input-group input { width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 16px; transition: 0.2s; }
-        .input-group input:focus { outline: none; border-color: #3b82f6; }
-        .question { background: #f8fafc; padding: 16px 18px; border-radius: 12px; margin-bottom: 14px; border-left: 5px solid #8b5cf6; }
-        .question .qnum { font-weight: 700; font-size: 13px; color: #64748b; margin-bottom: 8px; }
-        .question .option { display: flex; align-items: flex-start; gap: 12px; padding: 10px 14px; margin: 4px 0; border-radius: 8px; cursor: pointer; transition: 0.15s; }
-        .question .option:hover { background: #e2e8f0; }
-        .question .option input[type="radio"] { margin-top: 2px; width: 18px; height: 18px; accent-color: #3b82f6; cursor: pointer; flex-shrink: 0; }
-        .question .option .text { font-size: 15px; }
-        .btn-submit { width: 100%; padding: 16px; background: #3b82f6; color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: 700; cursor: pointer; transition: 0.2s; margin-top: 10px; }
-        .btn-submit:hover { background: #2563eb; transform: scale(1.01); }
-        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-        .status { margin-top: 20px; padding: 14px; border-radius: 10px; text-align: center; font-weight: 600; display: none; }
-        .status.success { display: block; background: #dcfce7; color: #166534; }
-        .status.error { display: block; background: #fee2e2; color: #991b1b; }
-        .progress { text-align: center; font-size: 14px; color: #64748b; margin-top: 10px; font-weight: 600; }
-        @media (max-width: 600px) { .container { padding: 16px; } .question .option { padding: 6px 8px; } }
-    </style>
+    <title>What is Information Security — Blog</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>🧠 Личностный тест</h1>
-    <p class="subtitle">30 вопросов · выберите один из двух вариантов</p>
+<header class="site-header">
+    <div class="header-inner">
+        <a href="#" class="logo">logo</a>
+        <nav class="main-nav">
+            <a href="#">Products</a>
+            <a href="#">Solutions</a>
+            <a href="#">Partners</a>
+            <a href="#">Support</a>
+            <a href="#">Company</a>
+        </nav>
+        <div class="header-actions">
+            <span class="search">Search</span>
+            <a href="#" class="btn-blog">To Blog</a>
+        </div>
+    </div>
+</header>
 
-    <div class="input-group">
-        <label>👤 Ваше ФИО (или любое имя)</label>
-        <input type="text" id="userName" placeholder="Например: Иванов Иван Иванович" />
+<main class="container article">
+    <nav class="breadcrumbs">
+        <a href="#">Blog</a> / <span>Articles</span>
+    </nav>
+
+    <h1>What is Information Security</h1>
+
+    <div class="article-meta">
+        <div class="author">
+            <div class="avatar"></div>
+            <div>
+                <strong>Alexander Komissarov</strong>
+                <span>Content Manager</span>
+            </div>
+        </div>
+        <div class="meta-info">
+            <span>Articles</span>
+            <span>28.01.2026</span>
+            <span>9 min</span>
+        </div>
+        <button class="share-btn" onclick="copyLink()">Share</button>
     </div>
 
-    <form id="testForm">
-        <div id="questionsContainer"></div>
-    </form>
+    <div class="hero-image">blog image</div>
 
-    <button class="btn-submit" id="submitBtn">📤 Отправить результаты</button>
-    <div class="progress" id="progressDisplay">Ответов: 0 из 30</div>
-    <div id="statusMessage" class="status"></div>
-</div>
+    <aside class="toc">
+        <h3>In this article:</h3>
+        <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#not-it">Information Security Is Not Only About IT</a></li>
+            <li><a href="#cia">The Foundation of Information Security: The CIA Triad</a></li>
+            <li><a href="#people">How Protection Is Built: People, Processes, Technologies</a></li>
+            <li><a href="#threats">Who Are We Protecting Against? Threat Classification</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+        </ul>
+    </aside>
+
+    <section id="intro">
+        <h2>Introduction</h2>
+        <p>The value of a business today is determined not by the number of servers, but by the volumes of data they process. Information has become the main business asset, and its compromise or irreversible loss costs an organization far more than any equipment failure. A burnt-out server is a financial expense, but a compromised customer base, destroyed intellectual property, or halted processes due to a ransomware virus can threaten the very existence of the business.</p>
+        <p>Earlier, in the article "Cybersecurity and Cyber Resilience," we discussed how a company should protect its digital perimeter and how recovery after attacks occurs. These are two important components of a broader concept — information security (InfoSec). InfoSec goes beyond the IT department: it ensures the protection of assets regardless of their form, whether it's a database in the cloud or a paper archive in a safe.</p>
+        <p>Let's break down what elements make up an information security system.</p>
+    </section>
+
+    <section id="not-it">
+        <h2>Information Security Is Not Only About IT</h2>
+        <p>In the public mind, information security is often associated exclusively with antiviruses, firewalls, and complex passwords. However, this is a dangerous oversimplification. To build reliable protection, it's necessary to understand that InfoSec is not a set of utilities, but a risk management process.</p>
+        <p>According to the international standard GOST R ISO/IEC 27000, information security is "the preservation of confidentiality, integrity, and availability of information." Note: this definition says nothing about computers, servers, or clouds. The key object of protection is information itself, not the medium on which it is stored.</p>
+        <p>For a business, a leak of data about a strategic deal is equally destructive whether it happens through hacking a mail server or through a folder of documents left by a manager in a taxi. Therefore, an InfoSec system must cover information in all forms of its existence:</p>
+        <ul>
+            <li><strong>Digital data.</strong> Customer databases (CRM), financial reporting in 1C, email, files on workstations and in the cloud, program code.</li>
+            <li><strong>Information on physical media.</strong> Paper archives, printed contracts and copies of orders, as well as the storage devices themselves — external hard drives, flash drives, and tapes.</li>
+            <li><strong>Speech information.</strong> Data spoken during meetings, telephone conversations, or office discussions.</li>
+        </ul>
+        <p>Information security is an "umbrella" discipline. It includes IT security (protection of digital assets), physical security, and organizational measures for working with personnel. Ignoring any of these forms creates a gap through which a business can lose its assets.</p>
+    </section>
+
+    <section id="cia">
+        <h2>The Foundation of Information Security: The CIA Triad</h2>
+        <p>Any protection system, whether a bank vault or a corporate data center, is built on three basic principles. In international practice, this is called the CIA model (Confidentiality, Integrity, Availability); in Russian terminology — the CID triad (Confidentiality, Integrity, Availability).</p>
+        <div class="scheme">scheme</div>
+        <p>If at least one of these elements is violated, the information cannot be considered protected.</p>
+
+        <h3>Confidentiality</h3>
+        <p>This principle guarantees that only those users, processes, or devices that have passed authorization have access to information. The main task is to prevent data leakage beyond the trusted contour and its falling into the hands of an attacker.</p>
+        <p>To ensure confidentiality, a set of measures is used:</p>
+        <ul>
+            <li><strong>Access management (IAM).</strong> The principle of least privilege, where an employee is granted rights only to the resources necessary for work.</li>
+            <li><strong>Cryptography.</strong> Encryption of data both at rest and in transit, so that in case of interception, the attacker cannot read it.</li>
+            <li><strong>DLP systems (Data Leak Prevention).</strong> Solutions to prevent information leakage. For example, Kiber Protego provides comprehensive protection against data leakage from corporate computers, servers, and virtual environments.</li>
+        </ul>
+
+        <h3>Integrity</h3>
+        <p>Integrity means that data is reliable, complete, and has not been subjected to unauthorized changes. A threat to integrity is not only the substitution of details in a payment order, but also an accidental administrator error or equipment failure that damaged files.</p>
+        <p>Integrity control tools:</p>
+        <ul>
+            <li><strong>Electronic signature and checksums.</strong> Allow mathematical confirmation that a file has not been changed after creation or transmission.</li>
+            <li><strong>Immutability.</strong> A storage technology where data is assigned "read-only" status at the file system or object level. This blocks any attempt to delete or modify data until a specified period expires. Even with full network access, a virus cannot encrypt or destroy such a data copy.</li>
+        </ul>
+
+        <h3>Availability</h3>
+        <p>Information has value only when it can be used at the right moment. If a server is reliably protected from hackers but shuts down due to a power failure, the business incurs losses. An InfoSec system must guarantee uninterrupted access to resources.</p>
+        <p>To ensure availability, the following are used:</p>
+        <ul>
+            <li><strong>Fault tolerance.</strong> Use of high-availability clusters (High Availability), load balancers, and DDoS attack protection.</li>
+            <li><strong>Backup.</strong> Enterprise-level solutions such as Kiber Backup allow protecting data and physical and virtual environments, as well as various applications.</li>
+        </ul>
+        <p>A balanced InfoSec system pays equal attention to all three vertices of the CID triangle. A skew to one side (for example, excessive encryption that slows down operations) will inevitably hit availability and business efficiency.</p>
+
+        <div class="promo-card">
+            <span class="promo-tag">background</span>
+            <h4>Kiber Backup</h4>
+            <p>Russian backup and data recovery system with protection against ransomware viruses</p>
+            <a href="#" class="btn-primary">Learn more</a>
+        </div>
+    </section>
+
+    <section id="people">
+        <h2>How Protection Is Built: People, Processes, Technologies</h2>
+        <p>A common mistake of managers is to perceive information security as a purely technical task that can be solved by purchasing expensive equipment and software. In practice, even the most perfect firewall is useless if the administrator doesn't know how to configure it, and employees stick password notes on their monitors.</p>
+        <p>An effective InfoSec system always relies on three equal pillars: people, processes, and technologies.</p>
+
+        <h3>People</h3>
+        <p>The human remains the weakest link in the security contour. According to statistics, the vast majority of successful attacks begin with social engineering, phishing emails, or banal employee negligence.</p>
+        <p>Working with personnel includes:</p>
+        <ul>
+            <li><strong>Training and cyber hygiene.</strong> Regular training sessions where employees are explained how to recognize phishing, why they shouldn't use work email to register personal accounts in third-party services, and why two-factor authentication is needed.</li>
+            <li><strong>Security culture.</strong> Creating an environment where an employee is not afraid to report an incident and understands their responsibility for the company's digital assets.</li>
+        </ul>
+
+        <h3>Processes</h3>
+        <p>This is a set of rules defining how a company protects data and how it responds to incidents.</p>
+        <p>Key elements of the process approach:</p>
+        <ul>
+            <li><strong>Policies and regulations.</strong> Documents describing access rules, procedures for working with confidential information, and the data lifecycle.</li>
+            <li><strong>Compliance.</strong> Ensuring the company operates within the framework of legislation (for example, 152-FZ, requirements of the Central Bank of Russia or FSTEC) and industry standards.</li>
+            <li><strong>Incident management.</strong> A clear action plan in case of an attack or failure.</li>
+            <li><strong>InfoSec audit.</strong> Regular verification of how much the actual state of affairs corresponds to policies. This is an extensive topic requiring a systematic approach, so we will discuss a detailed audit checklist in one of our next articles.</li>
+        </ul>
+
+        <h3>Technologies</h3>
+        <p>These are tools that help people execute processes and automate protection. The technical level of InfoSec includes software and hardware.</p>
+        <p>In Russian practice, it is customary to divide into classes:</p>
+        <ul>
+            <li><strong>SZI (information security tools).</strong> This includes antiviruses, EDR systems, firewalls (NGFW), data leak prevention systems (DLP), and intrusion detection systems (IDS/IPS).</li>
+            <li><strong>SKZI (cryptographic information protection tools).</strong> Solutions for encrypting communication channels and creating electronic signatures.</li>
+            <li><strong>SRK (backup systems).</strong> If SZI failed to stop an attack, backup technologies allow "rolling back" the system to the last correct save point and restoring data.</li>
+        </ul>
+        <p>Only a balance of these three components creates security. Technologies without processes are money down the drain. Processes without people are non-working instructions. And people without technologies are high labor costs and high risk of errors.</p>
+    </section>
+
+    <section id="threats">
+        <h2>Who Are We Protecting Against? Threat Classification</h2>
+        <p>To build effective protection, you need to know the enemy by sight. In the context of information security, the "enemy" is any event or action that can violate the confidentiality, integrity, or availability of data.</p>
+        <p>The entire variety of threats is usually divided into two large groups: natural and artificial.</p>
+        <ul>
+            <li><strong>Natural threats.</strong> These are factors that the security service cannot influence directly but must minimize their consequences. This includes natural disasters, man-made accidents, and power failures.</li>
+            <li><strong>Artificial threats.</strong> These are threats emanating from humans.</li>
+        </ul>
+        <p>Artificial threats, in turn, are divided by motive:</p>
+        <ul>
+            <li><strong>Unintentional (human factor).</strong> The most frequent and underestimated type of threat. Employees don't wish the company harm but get tired, make mistakes, or show negligence.</li>
+            <li><strong>Intentional (malicious).</strong> Purposeful actions to cause damage or gain benefit. These are hackers, cybercriminal groups (APT), and intruders located inside the company's perimeter.</li>
+        </ul>
+        <p>Understanding the nature of a threat helps to correctly select a protection tool. A backup in the cloud saves from fire, layered perimeter defense from a hacker, and access rights control and activity monitoring from an insider.</p>
+    </section>
+
+    <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>Information security is not a state that can be achieved once and for all by ticking a box in a report. It is a continuous cyclical process. You cannot "configure security" and forget about it for a year: while you are reading this article, the threat landscape has already changed, new vulnerabilities and attack vectors have appeared.</p>
+        <p>Building a comprehensive protection system may seem like an overwhelming task, especially given the shortage of personnel and budgets. Our advice — move from simple to complex. Before implementing complex analytical systems, make sure the "basics" are covered:</p>
+        <ol>
+            <li>Your data is reliably protected from irreversible loss (backup is configured and tested).</li>
+            <li>You control information transmission channels and are protected from leakage (DLP system is working).</li>
+        </ol>
+        <p>These measures will provide the necessary level of security on which further echelons of defense can be built. You can explore the full stack of Kiberprotect products for protection, backup, and data storage in the Products section.</p>
+    </section>
+
+    <div class="promo-card webinar">
+        <span class="promo-tag">Webinar</span>
+        <p class="webinar-date">01.12.2026 · 12:00</p>
+        <h4>Cyber Resilience of the Financial Sector</h4>
+        <p>Regulatory requirements and protection practices for CII subjects</p>
+        <a href="#" class="btn-primary">Register</a>
+    </div>
+
+    <div class="subscribe">
+        <h4>Subscribe to our newsletter</h4>
+        <p>Stay up to date with all news and events</p>
+        <a href="#" class="btn-primary">Subscribe</a>
+    </div>
+
+    <section class="read-also">
+        <h2>Read also</h2>
+        <ul class="post-list">
+            <li><span class="tag">Blog</span> 11.08.2026 — <a href="#">How to Protect Data in Kubernetes: Experience of Kiberprotect and Flant</a></li>
+            <li><span class="tag">Blog</span> 04.08.2026 — <a href="#">Troubleshooting Kiber Backup on Linux</a></li>
+            <li><span class="tag">Blog</span> 28.07.2026 — <a href="#">V2V Migration of Virtual Machines: How Kiber Backup Simplifies Transition Between Hypervisors</a></li>
+            <li><span class="tag">Blog</span> 06.10.2026 — <a href="#">Failure Domains: What They Are, Their Types, and Impact on Storage Systems</a></li>
+            <li><span class="tag">Blog</span> 02.10.2026 — <a href="#">Kiber Backup Start: Reliable Data Protection Without Unnecessary Complexity</a></li>
+            <li><span class="tag">Blog</span> 29.09.2026 — <a href="#">Backup Without Performance Degradation</a></li>
+            <li><span class="tag">Blog</span> 22.09.2026 — <a href="#">Kiber Backup Cloud: Five Scenarios Where Backup Solves a Business Problem</a></li>
+            <li><span class="tag">Blog</span> 15.09.2026 — <a href="#">Storage Tiers: How to Save on Archives</a></li>
+            <li><span class="tag">Blog</span> 08.09.2026 — <a href="#">Best Practices for Backup Monitoring: 7 Steps to Reliable Data Protection</a></li>
+            <li><span class="tag">Blog</span> 03.09.2026 — <a href="#">Kiber Backup Cloud Update: Scaling, Multithreading, and Agentless VM Protection</a></li>
+            <li><span class="tag">Blog</span> 25.08.2026 — <a href="#">5 Advantages of Backup as a Service: Why Cloud Backup Is More Profitable Than Local</a></li>
+            <li><span class="tag">Blog</span> 18.08.2026 — <a href="#">Replication vs Erasure Coding: How to Configure Fault Tolerance in Kiber Storage</a></li>
+        </ul>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-cols">
+        <div>
+            <h4>Products</h4>
+            <ul>
+                <li><a href="#">Kiber Backup</a></li>
+                <li><a href="#">Kiber Backup Cloud</a></li>
+                <li><a href="#">Kiber Backup Start</a></li>
+                <li><a href="#">Kiber Storage</a></li>
+                <li><a href="#">Kiber Infrastructure</a></li>
+                <li><a href="#">Kiber Protego</a></li>
+                <li><a href="#">Kiber Files</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Support</h4>
+            <ul>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Knowledge Base</a></li>
+                <li><a href="#">Product Updates</a></li>
+                <li><a href="#">Professional Services</a></li>
+                <li><a href="#">Support Contacts</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Success Stories</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Technology & Solutions Center</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span class="logo">logo</span>
+        <span>© OOO "Kiberprotect", 2026</span>
+        <a href="#">License Agreement</a>
+        <a href="#">Licensing Policy</a>
+        <a href="#">Privacy Policy</a>
+    </div>
+    <div class="cookie-banner">
+        We collect cookies and use recommendation technologies. By continuing to use the site, you agree to the processing of cookies and other user data in accordance with the privacy policy. You can block the use of cookies by the site in your browser settings.
+        <button onclick="this.parentElement.style.display='none'">Accept</button>
+    </div>
+</footer>
 
 <script>
-    // ============================================================
-    // ТВОИ 30 ВОПРОСОВ
-    // ============================================================
-    const questions = [
-        { opt1: "Я обычно говорю людям то, что у меня на уме.", letter1: "О", opt2: "Я обычно держу мнение при себе.", letter2: "П" },
-        { opt1: "Я вижу себя хладнокровным и сдержанным с другими.", letter1: "П", opt2: "Я вижу себя теплым и дружелюбным с другими.", letter2: "О" },
-        { opt1: "Я обычно показываю свои эмоции другим.", letter1: "О", opt2: "Я обычно сдерживаю свои эмоции внутри себя.", letter2: "П" },
-        { opt1: "Я вижу себя спешащим человеком.", letter1: "Р", opt2: "Я вижу себя неторопливым человеком.", letter2: "Э" },
-        { opt1: "Я вижу себя человеком, готовым рисковать в большинстве ситуаций.", letter1: "Э", opt2: "Я вижу себя человеком, который избегает или минимизирует риск в большинстве ситуаций.", letter2: "Р" },
-        { opt1: "Я вижу себя настроенным на игру и любящим веселье человеком.", letter1: "Э", opt2: "Я вижу себя серьезным и вдумчивым человеком.", letter2: "Р" },
-        { opt1: "Я обычно жду, пока другие начнут общение со мной.", letter1: "П", opt2: "Я обычно начинаю общение.", letter2: "О" },
-        { opt1: "Я обычно рассуждаю на основе мнений.", letter1: "Э", opt2: "Я обычно рассуждаю на основе фактов.", letter2: "Р" },
-        { opt1: "Я обычно люблю работать с другими.", letter1: "О", opt2: "Я обычно люблю работать один.", letter2: "П" },
-        { opt1: "Я обычно беру на себя ответственность за ситуацию.", letter1: "Р", opt2: "Я обычно остаюсь в тени.", letter2: "Э" },
-        { opt1: "Я вижу себя активным и прямым человеком.", letter1: "О", opt2: "Я вижу себя тихим и умеренным человеком.", letter2: "П" },
-        { opt1: "Я обычно фокусирую внимание на итогах и результатах.", letter1: "Р", opt2: "Я обычно фокусирую внимание на процессе или методе.", letter2: "Э" },
-        { opt1: "Меня обычно интересует, что чувствуют люди.", letter1: "Э", opt2: "Меня обычно больше интересует, что думают люди.", letter2: "Р" },
-        { opt1: "Я обычно являюсь непринужденным и неформальным в общении с другими.", letter1: "Э", opt2: "Я обычно являюсь деловым и формальным в общении с другими.", letter2: "Р" },
-        { opt1: "Я обычно избегаю личностного фактора в общении с людьми.", letter1: "Р", opt2: "Я обычно прибегаю к более личностному подходу к людям.", letter2: "Э" },
-        { opt1: "Я обычно иду напрямую в конфликтной ситуации.", letter1: "Р", opt2: "Я обычно избегаю конфликта и конфронтации.", letter2: "Э" },
-        { opt1: "Я обычно становлюсь нетерпеливым с другими.", letter1: "О", opt2: "Я вижу себя терпеливым с другими.", letter2: "П" },
-        { opt1: "Я обычно много общаюсь с другими.", letter1: "О", opt2: "Я обычно имею ограниченное общение с другими.", letter2: "П" },
-        { opt1: "Я обычно больше ориентируюсь на задачу.", letter1: "Р", opt2: "Я обычно больше ориентируюсь на отношения.", letter2: "Э" },
-        { opt1: "Я обычно являюсь сдержанным и отчужденным с другими.", letter1: "П", opt2: "Я обычно являюсь открытым с другими.", letter2: "О" },
-        { opt1: "Я скорее вижу себя конкурирующим с другими.", letter1: "Р", opt2: "Я скорее вижу себя сотрудничающим с другими.", letter2: "Э" },
-        { opt1: "Я вижу себя более сдержанным с другими.", letter1: "П", opt2: "Я вижу себя более напористым с другими.", letter2: "О" },
-        { opt1: "Я обычно равнодушен к чувствам других.", letter1: "Р", opt2: "Я обычно проявляю внимание к чувствам других.", letter2: "Э" },
-        { opt1: "Я обычно принимаю быстрые решения.", letter1: "Р", opt2: "У меня обычно уходит больше времени на принятие решений.", letter2: "Э" },
-        { opt1: "Я вижу себя легким в общении и принимающим человеком.", letter1: "Э", opt2: "Я вижу себя требовательным к себе и другим человеком.", letter2: "Р" },
-        { opt1: "Я обычно следую за другими.", letter1: "П", opt2: "Я обычно направляю действия других.", letter2: "О" },
-        { opt1: "Я обычно насторожен и сдержан в общении.", letter1: "П", opt2: "Я обычно импульсивен и экспрессивен в общении.", letter2: "О" },
-        { opt1: "Я обычно держу свое мнение и мысли при себе.", letter1: "П", opt2: "Я обычно готов делиться своими мнениями и идеями.", letter2: "О" },
-        { opt1: "Я обычно становлюсь нетерпеливым при работе с другими.", letter1: "О", opt2: "Я обычно терпеливо работаю с другими.", letter2: "П" },
-        { opt1: "Я обычно делюсь своими личными чувствами с другими.", letter1: "О", opt2: "Я обычно держу свои личные чувства при себе.", letter2: "П" }
-    ];
-
-    // ============================================================
-    // РЕНДЕР ВОПРОСОВ
-    // ============================================================
-    const container = document.getElementById('questionsContainer');
-    let html = '';
-    questions.forEach((q, idx) => {
-        const num = idx + 1;
-        html += `
-            <div class="question">
-                <div class="qnum">Вопрос ${num}</div>
-                <label class="option">
-                    <input type="radio" name="q${num}" value="${q.letter1}" required />
-                    <span class="text">${q.opt1}</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q${num}" value="${q.letter2}" required />
-                    <span class="text">${q.opt2}</span>
-                </label>
-            </div>
-        `;
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        const btn = document.querySelector('.share-btn');
+        const original = btn.textContent;
+        btn.textContent = 'Link copied';
+        setTimeout(() => btn.textContent = original, 2000);
     });
-    container.innerHTML = html;
-
-    // ============================================================
-    // ПРОГРЕСС
-    // ============================================================
-    const progressDisplay = document.getElementById('progressDisplay');
-    function updateProgress() {
-        const form = document.getElementById('testForm');
-        const names = new Set();
-        form.querySelectorAll('input[type="radio"]').forEach(r => names.add(r.name));
-        let answered = 0;
-        for (let name of names) {
-            if (document.querySelector(`input[name="${name}"]:checked`)) answered++;
-        }
-        progressDisplay.textContent = `Ответов: ${answered} из ${questions.length}`;
-    }
-    document.addEventListener('change', (e) => {
-        if (e.target && e.target.type === 'radio') updateProgress();
-    });
-
-    // ============================================================
-    // ОТПРАВКА
-    // ============================================================
-    const submitBtn = document.getElementById('submitBtn');
-    const statusMsg = document.getElementById('statusMessage');
-
-    // ⚠️ ТВОЙ НОВЫЙ URL
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxI9LPQPq4l6Y2E0frWfcSh1BBs6O6bv_WblXQZT6hkBMfxGNS_7ICLVijX2UyWJ4MtVg/exec';
-
-    submitBtn.addEventListener('click', async function(e) {
-        e.preventDefault();
-
-        const userName = document.getElementById('userName').value.trim();
-        if (!userName) {
-            statusMsg.className = 'status error';
-            statusMsg.textContent = '⚠️ Введите ваше ФИО или имя.';
-            return;
-        }
-
-        const checked = document.querySelectorAll('input[type="radio"]:checked');
-        if (checked.length !== questions.length) {
-            statusMsg.className = 'status error';
-            statusMsg.textContent = `⚠️ Ответьте на все 30 вопросов! (отвечено ${checked.length} из 30)`;
-            return;
-        }
-
-        let countO = 0, countP = 0, countR = 0, countE = 0;
-        checked.forEach(r => {
-            const val = r.value;
-            if (val === 'О') countO++;
-            else if (val === 'П') countP++;
-            else if (val === 'Р') countR++;
-            else if (val === 'Э') countE++;
-        });
-
-        const data = {
-            name: userName,
-            O: countO,
-            P: countP,
-            R: countR,
-            E: countE,
-            timestamp: new Date().toLocaleString('ru-RU')
-        };
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Отправка...';
-        statusMsg.className = 'status';
-
-        try {
-            await fetch(SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-
-            statusMsg.className = 'status success';
-            statusMsg.textContent = '✅ Результаты отправлены! Спасибо!';
-            submitBtn.textContent = '✅ Отправлено';
-            submitBtn.disabled = true;
-        } catch (error) {
-            statusMsg.className = 'status error';
-            statusMsg.textContent = '❌ Ошибка. Попробуйте позже.';
-            submitBtn.disabled = false;
-            submitBtn.textContent = '📤 Отправить повторно';
-        }
-    });
-
-    updateProgress();
+}
 </script>
 
 </body>
